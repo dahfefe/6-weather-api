@@ -9,16 +9,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <!--Font Awesome allows for icons that behave like text (helpful for easily placing an icon next to text or say changing color with font)-->
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <title>Git it Done</title>
+  <title>Weather Dashboard</title>
 </head>
 
 <body class="flex-column min-100-vh">
   <header class="hero">
     <h1 class="app-title">
-      <i class="fab fa-github"></i> Git it Done!
+      <i class="fab fa-github"></i> Weather Dashboard
     </h1>
-    <p>Search for a GitHub user or click on a language to see a list of repositories and how many open issues they have!
-    </p>
   </header>
 
 
@@ -26,20 +24,24 @@
     <div class="col-12 col-md-4">
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By User</h3>
+        <h3 class="card-header text-uppercase">Search for a City:</h3>
         <form id="user-form" class="card-body">
           <label class="form-label" for="username">Username</label>
-          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-          <button type="submit" class="btn">Get User</button>
+          <input name="username" id="username" type="text" placeholder="San Diego" autofocus="true" class="form-input" />
+          <button type="submit" class="btn">Search</button>
         </form>
       </div>
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By Topic</h3>
         <div id="language-buttons" class="card-body">
-          <button data-language="javascript" class="btn">JavaScript</button>
-          <button data-language="html" class="btn">HTML</button>
-          <button data-language="css" class="btn">CSS</button>
+          <button data-language="javascript" class="btn">Atlanta</button>
+          <button data-language="html" class="btn">Denver</button>
+          <button data-language="css" class="btn">Seattle</button>
+          <button data-language="css" class="btn">San Francisco</button>
+          <button data-language="css" class="btn">Orlando</button>
+          <button data-language="css" class="btn">New York</button>
+          <button data-language="css" class="btn">Chicago</button>
+          <button data-language="css" class="btn">Austin</button>
         </div>
       </div>
     </div>
