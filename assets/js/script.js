@@ -53,7 +53,7 @@ var getFeaturedRepos = function (language) {
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        displayRepos(data.items, language);   // why "data.items" here?
+        displayRepos(data.items, language);   
       });
     } else {
       alert('Error: ' + response.statusText);
@@ -61,8 +61,7 @@ var getFeaturedRepos = function (language) {
   });
 };
 
-var displayRepos = function (repos, searchTerm) {   // how does it know what "repos" is? How does it know what "searchTerm" is? I don't see "searchTerm" defined anywhere!
-  if (repos.length === 0) {     // how does it know that repos is a number?
+var displayRepos = function (repos, searchTerm) {   
     repoContainerEl.textContent = 'No repositories found.';
     return;
   }
@@ -83,20 +82,17 @@ var displayRepos = function (repos, searchTerm) {   // how does it know what "re
     var statusEl = document.createElement('span');
     statusEl.classList = 'flex-row align-center';
 
-    if (repos[i].open_issues_count > 0) {   // why are we using "open issues count?
+    if (repos[i].open_issues_count > 0) {   
       statusEl.innerHTML =
         "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + ' issue(s)';
     } else {
       statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
     }
 
-    repoEl.appendChild(statusEl);   // what's the purpose of "statusEl.innerHTML"? We simply use "statusEl" here... > Bootstrap is doing its magic!
+    repoEl.appendChild(statusEl);  
 
     repoContainerEl.appendChild(repoEl);
   }
-};
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 languageButtonsEl.addEventListener('click', buttonClickHandler);
-
-// Did the functions here need to be all "var"?
