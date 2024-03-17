@@ -1,42 +1,45 @@
 var userFormEl = document.querySelector('#user-form');
-var languageButtonsEl = document.querySelector('#language-buttons');
-var nameInputEl = document.querySelector('#username');
-var repoContainerEl = document.querySelector('#repos-container');
-var repoSearchTerm = document.querySelector('#repo-search-term');
+var cityButtonsEl = document.querySelector('#city-buttons');
+var cityInputEl = document.querySelector('#cityname');
+var todayContainerEl = document.querySelector('#today-container');
+var cityTodaySearchTerm = document.querySelector('#city-name-with-date');
+var tempToday = document.querySelector('#temp-today');
+var windToday = document.querySelector('#wind-today');
+var humidityToday = document.querySelector('#humidity-today');
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
-  var username = nameInputEl.value.trim();
+  var cityName = cityInputEl.value.trim();
 
-  if (username) {
-    getUserRepos(username);
+  if (cityName) {
+    getWeatherInfo(cityName);
 
-    repoContainerEl.textContent = '';
-    nameInputEl.value = '';
+    todayContainerEl.textContent = '';
+    cityInputEl.value = '';
   } else {
-    alert('Please enter a GitHub username');
+    alert('Please enter a city');
   }
 };
 
 var buttonClickHandler = function (event) {
-  var language = event.target.getAttribute('data-language');
+  var presetCityName = event.target.getAttribute('data-language');
 
-  if (language) {
-    getFeaturedRepos(language);
+  if (presetCityName) {
+    getFeaturedRepos(presetCityName);
 
-    repoContainerEl.textContent = '';
+    todayContainerEl.textContent = '';
   }
 };
 
-var getUserRepos = function (user) {
+var getWeatherInfo = function (user) {
   var apiUrl = 'https://api.github.com/users/' + user + '/repos';
 
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayRepos(data, user);
+          displayWeatherInfo(data, user);
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -53,7 +56,7 @@ var getFeaturedRepos = function (language) {
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        displayRepos(data.items, language);   
+        displayWeatherInfo(data.items, language);   
       });
     } else {
       alert('Error: ' + response.statusText);
@@ -61,12 +64,12 @@ var getFeaturedRepos = function (language) {
   });
 };
 
-var displayRepos = function (repos, searchTerm) {   
-    repoContainerEl.textContent = 'No repositories found.';
+var displayWeatherInfo = function (repos, searchTerm) {   
+    todayContainerEl.textContent = 'No repositories found.';
     return;
   }
 
-  repoSearchTerm.textContent = searchTerm;
+  cityTodaySearchTerm.textContent = searchTerm;
 
   for (var i = 0; i < repos.length; i++) {
     var repoName = repos[i].owner.login + '/' + repos[i].name;
@@ -91,8 +94,8 @@ var displayRepos = function (repos, searchTerm) {
 
     repoEl.appendChild(statusEl);  
 
-    repoContainerEl.appendChild(repoEl);
+    todayContainerEl.appendChild(repoEl);
   }
 
 userFormEl.addEventListener('submit', formSubmitHandler);
-languageButtonsEl.addEventListener('click', buttonClickHandler);
+cityButtonsEl.addEventListener('click', buttonClickHandler);

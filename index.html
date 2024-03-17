@@ -26,14 +26,13 @@
       <div class="card">
         <h3 class="card-header text-uppercase">Search for a City:</h3>
         <form id="user-form" class="card-body">
-          <label class="form-label" for="username">Username</label>
-          <input name="username" id="username" type="text" placeholder="San Diego" autofocus="true" class="form-input" />
+          <input name="cityname" id="cityname" type="text" placeholder="San Diego" autofocus="true" class="form-input" />
           <button type="submit" class="btn">Search</button>
         </form>
       </div>
 
       <div class="card">
-        <div id="language-buttons" class="card-body">
+        <div id="city-buttons" class="card-body">
           <button data-language="javascript" class="btn">Atlanta</button>
           <button data-language="html" class="btn">Denver</button>
           <button data-language="css" class="btn">Seattle</button>
@@ -51,11 +50,11 @@
       <h4>Temp:<span id="temp-today"></span></h4>
       <h4>Wind:<span id="wind-today"></span></h4>
       <h4>Humidity:<span id="humidity-today"></span></h4>
-      <div id="repos-container" class="list-group"></div>
+      <div id="today-container" class="list-group"></div>
     </div>
   </main>
 
-  <script src="./assets/js/homepage.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
