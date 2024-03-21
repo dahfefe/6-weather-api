@@ -10,7 +10,7 @@ var humidityToday = document.querySelector('#humidity-today');
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
-  var cityName = cityInputEl.value.trim();
+  var cityName = cityInputEl.value;
 
   if (cityName) {
     getWeatherInfo(cityName);
@@ -46,7 +46,7 @@ var getWeatherInfo = function (user) {
       }
     })
     .catch(function (error) {
-      alert('Unable to connect to GitHub');
+      alert('Unable to connect to Weather API');
     });
 };
 
@@ -65,7 +65,7 @@ var getFeaturedRepos = function (language) {
 };
 
 var displayWeatherInfo = function (repos, searchTerm) {   
-    todayContainerEl.textContent = 'No repositories found.';
+    todayContainerEl.textContent = 'No weather information found.';
     return;
   }
 
