@@ -1,9 +1,9 @@
 :root {
-  --primary: #ccdad1;
-  --secondary: #9caea9;
+  --primary: #e1ebe9;
+  --secondary: #70bec8;
   --tertiary: #788585;
-  --light-dark: #6f6866;
-  --dark: #38302e;
+  --light-dark: #999290;
+  --dark: #170693;
   --border-radius: 0.3rem;
 }
 
@@ -48,7 +48,7 @@ p {
   padding: 6px 5px;
   width: 100%;
   display: block;
-  margin: 5px 0;
+  margin: 15px 0;
   border-radius: var(--border-radius);
   color: var(--primary);
   border: none;
@@ -148,8 +148,12 @@ p {
 /* CARDS */
 .card {
   margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
+  border: none;
   border-radius: var(--border-radius);
+}
+
+#user-form {
+  border-bottom: 3px solid var(--dark);
 }
 
 .card-header {
