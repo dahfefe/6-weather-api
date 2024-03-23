@@ -10,13 +10,13 @@ var humidityToday = document.querySelector('#humidity-today');
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
+  todayContainerEl.textContent = '';
+  cityInputEl.value = '';
+
   var cityName = cityInputEl.value;
 
   if (cityName) {
     getWeatherInfo(cityName);
-
-    todayContainerEl.textContent = '';
-    cityInputEl.value = '';
   } else {
     alert('Please enter a city');
   }
@@ -32,17 +32,21 @@ var buttonClickHandler = function (event) {
   }
 };
 
-var getWeatherInfo = function (user) {
-  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
+var getWeatherInfo = function (cityName) {
+  // var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=5&appid=efd27a81601aecf8450cd1c62fee7b55';
 
-  fetch(apiUrl)
-    .then(function (response) {
+  var cityName = cityInputEl.value;
+  var apiUrl = 'https://www.loc.gov/search/?q=' + cityName + '&fo=json';
+
+  fetch(apiUrl).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayWeatherInfo(data, user);
+          console.log(data);
+          displayWeatherInfo(data, cityName);
         });
       } else {
-        alert('Error: ' + response.statusText);
+        todayContainerEl.textContent = "Please enter a valid city name."
+        // alert('Error: ' + response.statusText);
       }
     })
     .catch(function (error) {
@@ -64,6 +68,7 @@ var getFeaturedRepos = function (language) {
   });
 };
 
+/*
 var displayWeatherInfo = function (repos, searchTerm) {   
     todayContainerEl.textContent = 'No weather information found.';
     return;
@@ -99,3 +104,5 @@ var displayWeatherInfo = function (repos, searchTerm) {
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 cityButtonsEl.addEventListener('click', buttonClickHandler);
+
+*/
