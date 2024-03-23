@@ -1,19 +1,23 @@
 var userFormEl = document.querySelector('#user-form');
 var cityButtonsEl = document.querySelector('#city-buttons');
 var cityInputEl = document.querySelector('#cityname');
-var todayContainerEl = document.querySelector('#today-container');
+var todayContainerEl = document.getElementById('#today-container');
 var cityTodaySearchTerm = document.querySelector('#city-name-with-date');
 var tempToday = document.querySelector('#temp-today');
 var windToday = document.querySelector('#wind-today');
 var humidityToday = document.querySelector('#humidity-today');
 
-var formSubmitHandler = function (event) {
+function formSubmitHandler(event) {
   event.preventDefault();
 
-  todayContainerEl.textContent = '';
-  cityInputEl.value = '';
+  // todayContainerEl.textContent = '';
+  // cityInputEl.value = '';
 
-  var cityName = cityInputEl.value;
+  // var cityName = cityInputEl.value;
+
+
+
+/*
 
   if (cityName) {
     getWeatherInfo(cityName);
@@ -21,6 +25,10 @@ var formSubmitHandler = function (event) {
     alert('Please enter a city');
   }
 };
+
+*/
+
+/*
 
 var buttonClickHandler = function (event) {
   var presetCityName = event.target.getAttribute('data-language');
@@ -32,19 +40,73 @@ var buttonClickHandler = function (event) {
   }
 };
 
-var getWeatherInfo = function (cityName) {
-  // var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=5&appid=efd27a81601aecf8450cd1c62fee7b55';
+*/
+
+// var getWeatherInfo = function (cityName) {
 
   var cityName = cityInputEl.value;
-  var apiUrl = 'https://www.loc.gov/search/?q=' + cityName + '&fo=json';
+  // var apiUrl = 'https://www.loc.gov/search/?q=' + cityName + '&fo=json';
+  var apiUrl1 = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&APPID=efd27a81601aecf8450cd1c62fee7b55';
 
-  fetch(apiUrl).then(function (response) {
+  fetch(apiUrl1).then(function (response, cityName) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-          displayWeatherInfo(data, cityName);
+
+          var tempTodayP = document.createElement("p");
+          tempTodayP.textContent = cityName;
+          tempToday.appendChild(tempTodayP);  
+
+          // populateData(data1.results);
+          // displayWeatherInfo(data);
         });
-      } else {
+      } 
+  })
+
+  var latitude = data.coord.lat
+  var longitude = data.coord.lon
+
+  var apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=efd27a81601aecf8450cd1c62fee7b55&units=imperial';
+
+  fetch(apiUrl2).then(function (response2) {
+    if (response2.ok) {
+      response2.json().then(function (data2) {
+        console.log(data2);
+        // populateData(data2.results);
+        // displayWeatherInfo(data);
+      });
+    } 
+})
+
+}
+
+// };
+
+/*
+
+  var tempTodayP = document.createElement("p");
+  tempTodayP.textContent = base;
+  tempToday.appendChild(tempTodayP);
+
+function populateData(data) {
+  for (var i = 0; i < data.length; i++) {
+    var item = data[i];
+
+    console.log(item);
+
+    var itemContainer = document.createElement("div");
+    itemContainer.textContent = item.title;
+    todayContainerEl.appendChild(itemContainer);
+  }
+}
+
+};
+
+*/
+
+/*
+      
+      else {
         todayContainerEl.textContent = "Please enter a valid city name."
         // alert('Error: ' + response.statusText);
       }
@@ -53,6 +115,10 @@ var getWeatherInfo = function (cityName) {
       alert('Unable to connect to Weather API');
     });
 };
+
+*/
+
+/*
 
 var getFeaturedRepos = function (language) {
   var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';   // how did we find this url? (thought process for finding this?)
@@ -68,8 +134,8 @@ var getFeaturedRepos = function (language) {
   });
 };
 
-/*
-var displayWeatherInfo = function (repos, searchTerm) {   
+
+var displayWeatherInfo = function (data) {   
     todayContainerEl.textContent = 'No weather information found.';
     return;
   }
@@ -102,7 +168,9 @@ var displayWeatherInfo = function (repos, searchTerm) {
     todayContainerEl.appendChild(repoEl);
   }
 
-userFormEl.addEventListener('submit', formSubmitHandler);
+
 cityButtonsEl.addEventListener('click', buttonClickHandler);
 
 */
+
+userFormEl.addEventListener('submit', formSubmitHandler);

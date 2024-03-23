@@ -152,6 +152,20 @@ p {
   border-radius: var(--border-radius);
 }
 
+.right-side-card {
+  border: none;
+}
+
+.right-side-upper-card {
+  border: 3px solid var(--dark);
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.city-name-with-date {
+  margin-top: 10px;
+}
+
 #user-form {
   border-bottom: 3px solid var(--dark);
 }
