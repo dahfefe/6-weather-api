@@ -33,9 +33,20 @@ var humidityThreeDaysOut = document.querySelector('#humidity-three-days-out');
 var humidityFourDaysOut = document.querySelector('#humidity-four-days-out');
 var humidityFiveDaysOut = document.querySelector('#humidity-five-days-out');
 
-var cityName = cityInputEl.value;
+// Click buttons as denoted by city label
+var buttonAtlanta = document.querySelector('#buttonAtlanta');
+var buttonDenver = document.querySelector('#buttonDenver');
+var buttonSeattle = document.querySelector('#buttonSeattle');
+var buttonSF = document.querySelector('#buttonSF');
+var buttonOrlando = document.querySelector('#buttonOrlando');
+var buttonNY = document.querySelector('#buttonNY');
+var buttonChicago = document.querySelector('#buttonChicago');
+var buttonAustin = document.querySelector('#buttonAustin');
+
+// Text field variable for user input + initial input by deafult when opening page
 citySearchTerm.textContent = "Sacramento ";
 
+// Displaying dates from present time
 function displayTime() {
   var date = new Date();
   var year = date.getFullYear();
@@ -63,39 +74,16 @@ function displayTime() {
 
 function formSubmitHandler(event) {
   event.preventDefault();
+  var cityName = cityInputEl.value;
 
-  citySearchTerm.textContent = "";
-
-  // var cityName = cityInputEl.value;
-
-
-
-/*
-
-  if (cityName) {
-    getWeatherInfo(cityName);
-  } else {
+  if (!cityName) {
     alert('Please enter a city');
+  } else {
+    getWeatherData();
   }
-};
+}
 
-*/
-
-/*
-
-var buttonClickHandler = function (event) {
-  var presetCityName = event.target.getAttribute('data-language');
-
-  if (presetCityName) {
-    getFeaturedRepos(presetCityName);
-
-    todayContainerEl.textContent = '';
-  }
-};
-
-*/
-
-// var getWeatherInfo = function (cityName) {
+function getWeatherData (cityName) {
 
   var cityName = cityInputEl.value;
   var apiUrl1 = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&APPID=efd27a81601aecf8450cd1c62fee7b55';
@@ -104,15 +92,7 @@ var buttonClickHandler = function (event) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-          console.log(tempToday);
           console.log(cityName);
-
-          // var tempTodayP = document.createElement("p");
-          // tempTodayP.textContent = "City Name: " + cityName;
-          // tempToday.appendChild(tempTodayP);  
-        
-          // populateData(data1.results);
-          // displayWeatherInfo(data);
         
           var latitude = data.coord.lat
           var longitude = data.coord.lon
@@ -148,72 +128,25 @@ var buttonClickHandler = function (event) {
                 humidityFourDaysOut.textContent = " " + data2.list[32].main.humidity + " %";
                 humidityFiveDaysOut.textContent = " " + data2.list[39].main.humidity + " %";
 
-                // populateData(data2.results);
-                // displayWeatherInfo(data);
-
               });
             } 
           })
         });
       } 
 
+    cityInputEl.value = "";
+    
   })
-
 }
 
-// };
- 
-/*
-
-  var tempTodayP = document.createElement("p");
-  tempTodayP.textContent = data.base;
-  tempToday.appendChild(tempTodayP);
-
-/*
-
-function populateData(data) {
-  for (var i = 0; i < data.length; i++) {
-    var item = data[i];
-
-    console.log(item);
-
-    var itemContainer = document.createElement("div");
-    itemContainer.textContent = item.title;
-    todayContainerEl.appendChild(itemContainer);
-  }
+function presetButtonClickHandler (event) {
+  var presetCityName = event.target.getAttribute('value');
+  console.log(presetCityName);
+  presetCityName = cityInputEl.value;
+  getWeatherData();
 }
 
-
 /*
-      
-      else {
-        todayContainerEl.textContent = "Please enter a valid city name."
-        // alert('Error: ' + response.statusText);
-      }
-    })
-    .catch(function (error) {
-      alert('Unable to connect to Weather API');
-    });
-};
-
-*/
-
-/*
-
-var getFeaturedRepos = function (language) {
-  var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';   // how did we find this url? (thought process for finding this?)
-
-  fetch(apiUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        displayWeatherInfo(data.items, language);   
-      });
-    } else {
-      alert('Error: ' + response.statusText);
-    }
-  });
-};
-
 
 var displayWeatherInfo = function (data) {   
     todayContainerEl.textContent = 'No weather information found.';
@@ -255,3 +188,12 @@ cityButtonsEl.addEventListener('click', buttonClickHandler);
 
 displayTime();
 userFormEl.addEventListener('submit', formSubmitHandler);
+
+buttonAtlanta.addEventListener('click', presetButtonClickHandler);
+buttonDenver.addEventListener('click', presetButtonClickHandler);
+buttonSeattle.addEventListener('click', presetButtonClickHandler);
+buttonSF.addEventListener('click', presetButtonClickHandler);
+buttonOrlando.addEventListener('click', presetButtonClickHandler);
+buttonNY.addEventListener('click', presetButtonClickHandler);
+buttonChicago.addEventListener('click', presetButtonClickHandler);
+buttonAustin.addEventListener('click', presetButtonClickHandler);

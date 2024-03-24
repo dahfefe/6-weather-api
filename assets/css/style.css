@@ -51,9 +51,9 @@ p {
   font-size: 1.3rem;
   text-decoration: none;
   padding: 6px 5px;
-  width: 100%;
+  width: 97%;
   display: block;
-  margin: 15px 0;
+  margin: 15px 8px;
   border-radius: var(--border-radius);
   color: var(--primary);
   border: none;
@@ -119,6 +119,7 @@ p {
   display: inline-block;
   border-radius: var(--border-radius);
   box-shadow: 6px 5px var(--light-dark);
+  text-align: right;
 }
 
 .list-group {
