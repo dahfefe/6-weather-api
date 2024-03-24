@@ -45,44 +45,53 @@
 
     <div class="card col-12 col-md-8 right-side-card">
       <div class="right-side-upper-card">
-        <h2>A <span id="city-name-with-date"></span></h2>
+        <h2><span id="city-name"></span><span id="today-date"></span></h2>
         <p>Temp:<span id="temp-today"></span></p>
         <p>Wind:<span id="wind-today"></span></p>
         <p>Humidity:<span id="humidity-today"></span></p>
-        <section id="today-container" class="list-group"></section>
       </div>
       <div>
         <h3>5-Day Forecast:<span id="header_five_day_forecast"></span></h3>
         <section id="today-container">
-          <div class="d-flex flex-row">
+          <div class="d-flex flex-row justify-space-around">
             <div class="card mx-auto">
               <div class="card-body" id="forecast_card">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h3><span id="one-day-in-future"></span></h3>
+                <p>Temp:<span id="temp-one-day-out"></span></p>
+                <p>Wind:<span id="wind-one-day-out"></span></p>
+                <p>Humidity:<span id="humidity-one-day-out"></span></p>
               </div>
             </div>
             <div class="card mx-auto">
               <div class="card-body" id="forecast_card">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <h3><span id="two-day-in-future"></span></h3>
+                <p>Temp:<span id="temp-two-days-out"></span></p>
+                <p>Wind:<span id="wind-two-days-out"></span></p>
+                <p>Humidity:<span id="humidity-two-days-out"></span></p>
               </div>
             </div>
             <div class="card mx-auto">
               <div class="card-body" id="forecast_card">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <h3><span id="three-day-in-future"></span></h3>
+                <p>Temp:<span id="temp-three-days-out"></span></p>
+                <p>Wind:<span id="wind-three-days-out"></span></p>
+                <p>Humidity:<span id="humidity-three-days-out"></span></p>
               </div>
             </div>
             <div class="card mx-auto">
               <div class="card-body" id="forecast_card">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <h3><span id="four-day-in-future"></span></h3>
+                <p>Temp:<span id="temp-four-days-out"></span></p>
+                <p>Wind:<span id="wind-four-days-out"></span></p>
+                <p>Humidity:<span id="humidity-four-days-out"></span></p>
               </div>
             </div>
             <div class="card mx-auto">
               <div class="card-body" id="forecast_card">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <h3><span id="five-day-in-future"></span></h3>
+                <p>Temp:<span id="temp-five-days-out"></span></p>
+                <p>Wind:<span id="wind-five-days-out"></span></p>
+                <p>Humidity:<span id="humidity-five-days-out"></span></p>
               </div>
             </div>
           </div>
@@ -91,6 +100,18 @@
     </div>
 
   </main>
+
+  <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous">
+  </script>
 
   <script src="./assets/js/script.js"></script>
   <script src="https://kit.fontawesome.com/4481c1b8a0.js" crossorigin="anonymous"></script>

@@ -2,16 +2,51 @@ var userFormEl = document.querySelector('#user-form');
 var cityButtonsEl = document.querySelector('#city-buttons');
 var cityInputEl = document.querySelector('#cityname');
 var todayContainerEl = document.getElementById('#today-container');
-var cityTodaySearchTerm = document.querySelector('#city-name-with-date');
+var citySearchTerm = document.querySelector('#city-name');
+var timeToday = document.querySelector('#today-date');
 var tempToday = document.querySelector('#temp-today');
 var windToday = document.querySelector('#wind-today');
 var humidityToday = document.querySelector('#humidity-today');
 
+// 5-Day Forecast Cards
+var cardDateOneDayOut = document.querySelector('#one-day-in-future');
+var cardDateTwoDaysOut = document.querySelector('#two-day-in-future');
+var cardDateThreeDaysOut = document.querySelector('#three-day-in-future');
+var cardDateFourDaysOut = document.querySelector('#four-day-in-future');
+var cardDateFiveDaysOut = document.querySelector('#five-day-in-future');
+
+var cityName = cityInputEl.value;
+citySearchTerm.textContent = "Sacramento ";
+
+function displayTime() {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  // Create a string in the format "MM/DD/YYYY"
+  var formattedDate = `${month}/${day}/${year}`;
+  var oneDayOut = `${month}/${day + 1}/${year}`;
+  var twoDaysOut = `${month}/${day + 2}/${year}`;
+  var threeDaysOut = `${month}/${day + 3}/${year}`;
+  var fourDaysOut = `${month}/${day + 4}/${year}`;
+  var fiveDaysOut = `${month}/${day + 5}/${year}`;
+
+  // Display the formatted date
+  console.log(formattedDate);
+
+  timeToday.textContent = "(" + formattedDate + ")";
+  cardDateOneDayOut.textContent = oneDayOut
+  cardDateTwoDaysOut.textContent = twoDaysOut
+  cardDateThreeDaysOut.textContent = threeDaysOut
+  cardDateFourDaysOut.textContent = fourDaysOut
+  cardDateFiveDaysOut.textContent = fiveDaysOut
+}
+
 function formSubmitHandler(event) {
   event.preventDefault();
 
-  // todayContainerEl.textContent = '';
-  // cityInputEl.value = '';
+  citySearchTerm.textContent = "";
 
   // var cityName = cityInputEl.value;
 
@@ -45,7 +80,6 @@ var buttonClickHandler = function (event) {
 // var getWeatherInfo = function (cityName) {
 
   var cityName = cityInputEl.value;
-  // var apiUrl = 'https://www.loc.gov/search/?q=' + cityName + '&fo=json';
   var apiUrl1 = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&APPID=efd27a81601aecf8450cd1c62fee7b55';
 
   fetch(apiUrl1).then(function (response) {
@@ -54,10 +88,11 @@ var buttonClickHandler = function (event) {
           console.log(data);
           console.log(tempToday);
           console.log(cityName);
-          var tempTodayP = document.createElement("p");
-          tempTodayP.textContent = "City Name: " + cityName;
-          tempToday.appendChild(tempTodayP);  
 
+          // var tempTodayP = document.createElement("p");
+          // tempTodayP.textContent = "City Name: " + cityName;
+          // tempToday.appendChild(tempTodayP);  
+        
           // populateData(data1.results);
           // displayWeatherInfo(data);
         
@@ -70,8 +105,16 @@ var buttonClickHandler = function (event) {
             if (response2.ok) {
               response2.json().then(function (data2) {
                 console.log(data2);
+                console.log(data2.list[2].main.temp);
+
+                citySearchTerm.textContent = cityName + " ";
+                tempToday.textContent = " " + data2.list[2].main.temp + " ℉";
+                windToday.textContent = " " + data2.list[2].wind.speed + " %";
+                humidityToday.textContent = " " + data2.list[2].main.humidity + " %";
+
                 // populateData(data2.results);
                 // displayWeatherInfo(data);
+
               });
             } 
           })
@@ -79,7 +122,6 @@ var buttonClickHandler = function (event) {
       } 
 
   })
-
 
 }
 
@@ -175,4 +217,5 @@ cityButtonsEl.addEventListener('click', buttonClickHandler);
 
 */
 
+displayTime();
 userFormEl.addEventListener('submit', formSubmitHandler);
