@@ -48,45 +48,50 @@ var buttonClickHandler = function (event) {
   // var apiUrl = 'https://www.loc.gov/search/?q=' + cityName + '&fo=json';
   var apiUrl1 = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&APPID=efd27a81601aecf8450cd1c62fee7b55';
 
-  fetch(apiUrl1).then(function (response, cityName) {
+  fetch(apiUrl1).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-
+          console.log(tempToday);
+          console.log(cityName);
           var tempTodayP = document.createElement("p");
-          tempTodayP.textContent = cityName;
+          tempTodayP.textContent = "City Name: " + cityName;
           tempToday.appendChild(tempTodayP);  
 
           // populateData(data1.results);
           // displayWeatherInfo(data);
+        
+          var latitude = data.coord.lat
+          var longitude = data.coord.lon
+
+          var apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=efd27a81601aecf8450cd1c62fee7b55&units=imperial';
+
+          fetch(apiUrl2).then(function (response2) {
+            if (response2.ok) {
+              response2.json().then(function (data2) {
+                console.log(data2);
+                // populateData(data2.results);
+                // displayWeatherInfo(data);
+              });
+            } 
+          })
         });
       } 
+
   })
 
-  var latitude = data.coord.lat
-  var longitude = data.coord.lon
-
-  var apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=efd27a81601aecf8450cd1c62fee7b55&units=imperial';
-
-  fetch(apiUrl2).then(function (response2) {
-    if (response2.ok) {
-      response2.json().then(function (data2) {
-        console.log(data2);
-        // populateData(data2.results);
-        // displayWeatherInfo(data);
-      });
-    } 
-})
 
 }
 
 // };
-
+ 
 /*
 
   var tempTodayP = document.createElement("p");
-  tempTodayP.textContent = base;
+  tempTodayP.textContent = data.base;
   tempToday.appendChild(tempTodayP);
+
+/*
 
 function populateData(data) {
   for (var i = 0; i < data.length; i++) {
@@ -100,9 +105,6 @@ function populateData(data) {
   }
 }
 
-};
-
-*/
 
 /*
       

@@ -22,7 +22,7 @@
     <div class="col-12 col-md-4">
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search for a City:</h3>
+        <h2 class="card-header text-uppercase">Search for a City:</h2>
         <form id="user-form" class="card-body">
           <input name="cityname" id="cityname" type="text" placeholder="San Diego" autofocus="true" class="form-input" />
           <button type="submit" class="btn">Search</button>
@@ -45,15 +45,48 @@
 
     <div class="card col-12 col-md-8 right-side-card">
       <div class="right-side-upper-card">
-        <h3>A <span id="city-name-with-date"></span></h3>
+        <h2>A <span id="city-name-with-date"></span></h2>
         <p>Temp:<span id="temp-today"></span></p>
         <p>Wind:<span id="wind-today"></span></p>
         <p>Humidity:<span id="humidity-today"></span></p>
         <section id="today-container" class="list-group"></section>
       </div>
       <div>
-        <h2>5-Day Forecast:<span id="city-name-with-date"></span></h2>
-        <section id="today-container" class="list-group"></section>
+        <h3>5-Day Forecast:<span id="header_five_day_forecast"></span></h3>
+        <section id="today-container">
+          <div class="d-flex flex-row">
+            <div class="card mx-auto">
+              <div class="card-body" id="forecast_card">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+            <div class="card mx-auto">
+              <div class="card-body" id="forecast_card">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+            </div>
+            <div class="card mx-auto">
+              <div class="card-body" id="forecast_card">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+            </div>
+            <div class="card mx-auto">
+              <div class="card-body" id="forecast_card">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+            </div>
+            <div class="card mx-auto">
+              <div class="card-body" id="forecast_card">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
 
