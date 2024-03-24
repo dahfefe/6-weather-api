@@ -135,15 +135,16 @@ function getWeatherData (cityName) {
       } 
 
     cityInputEl.value = "";
-    
+
   })
 }
 
 function presetButtonClickHandler (event) {
   var presetCityName = event.target.getAttribute('value');
   console.log(presetCityName);
-  presetCityName = cityInputEl.value;
-  getWeatherData();
+  citySearchTerm.textContent = presetCityName;
+  cityInputEl.value = presetCityName;
+  getWeatherData(presetCityName);
 }
 
 /*
