@@ -24,13 +24,13 @@
       <div class="card">
         <h2 class="card-header text-uppercase">Search for a City:</h2>
         <form id="user-form" class="card-body">
-          <input name="cityname" id="cityname" type="text" placeholder="San Diego" autofocus="true" class="form-input" />
+          <input name="cityname" id="cityname" type="text" placeholder="Sacramento" autofocus="true" class="form-input" />
           <button type="submit" class="btn">Search</button>
         </form>
       </div>
 
-      <div class="card">
-        <div id="city-buttons" class="card-body">
+      <div class="card" id="city-buttons">
+        <div class="card-body">
           <button data-language="javascript" class="btn">Atlanta</button>
           <button data-language="html" class="btn">Denver</button>
           <button data-language="css" class="btn">Seattle</button>
@@ -51,10 +51,10 @@
         <p>Humidity:<span id="humidity-today"></span></p>
       </div>
       <div>
-        <h3>5-Day Forecast:<span id="header_five_day_forecast"></span></h3>
+        <h2>5-Day Forecast:<span id="header_five_day_forecast"></span></h2>
         <section id="today-container">
           <div class="d-flex flex-row justify-space-around">
-            <div class="card mx-auto">
+            <div class="card" id="card-five-day-forecast">
               <div class="card-body" id="forecast_card">
                 <h3><span id="one-day-in-future"></span></h3>
                 <p>Temp:<span id="temp-one-day-out"></span></p>
@@ -62,7 +62,7 @@
                 <p>Humidity:<span id="humidity-one-day-out"></span></p>
               </div>
             </div>
-            <div class="card mx-auto">
+            <div class="card" id="card-five-day-forecast">
               <div class="card-body" id="forecast_card">
                 <h3><span id="two-day-in-future"></span></h3>
                 <p>Temp:<span id="temp-two-days-out"></span></p>
@@ -70,7 +70,7 @@
                 <p>Humidity:<span id="humidity-two-days-out"></span></p>
               </div>
             </div>
-            <div class="card mx-auto">
+            <div class="card" id="card-five-day-forecast">
               <div class="card-body" id="forecast_card">
                 <h3><span id="three-day-in-future"></span></h3>
                 <p>Temp:<span id="temp-three-days-out"></span></p>
@@ -78,7 +78,7 @@
                 <p>Humidity:<span id="humidity-three-days-out"></span></p>
               </div>
             </div>
-            <div class="card mx-auto">
+            <div class="card" id="card-five-day-forecast">
               <div class="card-body" id="forecast_card">
                 <h3><span id="four-day-in-future"></span></h3>
                 <p>Temp:<span id="temp-four-days-out"></span></p>
@@ -86,7 +86,7 @@
                 <p>Humidity:<span id="humidity-four-days-out"></span></p>
               </div>
             </div>
-            <div class="card mx-auto">
+            <div class="card" id="card-five-day-forecast">
               <div class="card-body" id="forecast_card">
                 <h3><span id="five-day-in-future"></span></h3>
                 <p>Temp:<span id="temp-five-days-out"></span></p>

@@ -34,13 +34,17 @@ h6 {
   margin-bottom: 10px;
 }
 
+h3 {
+  color: var(--primary);
+}
+
 main {
   margin: 20px auto;
   width: 94%;
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 15px;
 }
 
 .btn {
@@ -91,6 +95,10 @@ p {
   background-color: var(--tertiary);
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--dark);
+}
+
+#city-buttons {
+  border: none;
 }
 
 .hero {
@@ -153,6 +161,19 @@ p {
   border-radius: var(--border-radius);
 }
 
+#card-five-day-forecast {
+  border: none;
+  color: var(--primary); 
+  background-color: rgba(81, 81, 89, 0.811);
+  padding: 25px 50px;
+}
+
+section p,
+h3 {
+  margin-left: -50px;
+  padding-left: 0;
+}
+
 .right-side-card {
   border: none;
 }
@@ -179,11 +200,11 @@ p {
 }
 
 .card-body {
-  padding: 2.5%;
+  padding: 0%;
 }
 
 #forecast_card {
-  margin: 10px;
+  margin: 32px 32px;
 }
 
 /* FORM */

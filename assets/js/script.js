@@ -15,6 +15,24 @@ var cardDateThreeDaysOut = document.querySelector('#three-day-in-future');
 var cardDateFourDaysOut = document.querySelector('#four-day-in-future');
 var cardDateFiveDaysOut = document.querySelector('#five-day-in-future');
 
+var tempOneDayOut = document.querySelector('#temp-one-day-out');
+var tempTwoDaysOut = document.querySelector('#temp-two-days-out');
+var tempThreeDaysOut = document.querySelector('#temp-three-days-out');
+var tempFourDaysOut = document.querySelector('#temp-four-days-out');
+var tempFiveDaysOut = document.querySelector('#temp-five-days-out');
+
+var windOneDayOut = document.querySelector('#wind-one-day-out');
+var windTwoDaysOut = document.querySelector('#wind-two-days-out');
+var windThreeDaysOut = document.querySelector('#wind-three-days-out');
+var windFourDaysOut = document.querySelector('#wind-four-days-out');
+var windFiveDaysOut = document.querySelector('#wind-five-days-out');
+
+var humidityOneDayOut = document.querySelector('#humidity-one-day-out');
+var humidityTwoDaysOut = document.querySelector('#humidity-two-days-out');
+var humidityThreeDaysOut = document.querySelector('#humidity-three-days-out');
+var humidityFourDaysOut = document.querySelector('#humidity-four-days-out');
+var humidityFiveDaysOut = document.querySelector('#humidity-five-days-out');
+
 var cityName = cityInputEl.value;
 citySearchTerm.textContent = "Sacramento ";
 
@@ -108,9 +126,27 @@ var buttonClickHandler = function (event) {
                 console.log(data2.list[2].main.temp);
 
                 citySearchTerm.textContent = cityName + " ";
-                tempToday.textContent = " " + data2.list[2].main.temp + " ℉";
-                windToday.textContent = " " + data2.list[2].wind.speed + " %";
-                humidityToday.textContent = " " + data2.list[2].main.humidity + " %";
+                tempToday.textContent = " " + data2.list[0].main.temp + " ℉";
+                windToday.textContent = " " + data2.list[0].wind.speed + " MPH";
+                humidityToday.textContent = " " + data2.list[0].main.humidity + " %";
+
+                tempOneDayOut.textContent = " " + data2.list[8].main.temp + " ℉";
+                tempTwoDaysOut.textContent = " " + data2.list[16].main.temp + " ℉";
+                tempThreeDaysOut.textContent = " " + data2.list[24].main.temp + " ℉";
+                tempFourDaysOut.textContent = " " + data2.list[32].main.temp + " ℉";
+                tempFiveDaysOut.textContent = " " + data2.list[39].main.temp + " ℉";
+
+                windOneDayOut.textContent = " " + data2.list[8].wind.speed + " MPH";
+                windTwoDaysOut.textContent = " " + data2.list[16].wind.speed + " MPH";
+                windThreeDaysOut.textContent = " " + data2.list[24].wind.speed + " MPH";
+                windFourDaysOut.textContent = " " + data2.list[32].wind.speed + " MPH";
+                windFiveDaysOut.textContent = " " + data2.list[39].wind.speed + " MPH";
+
+                humidityOneDayOut.textContent = " " + data2.list[8].main.humidity + " %";
+                humidityTwoDaysOut.textContent = " " + data2.list[16].main.humidity + " %";
+                humidityThreeDaysOut.textContent = " " + data2.list[24].main.humidity + " %";
+                humidityFourDaysOut.textContent = " " + data2.list[32].main.humidity + " %";
+                humidityFiveDaysOut.textContent = " " + data2.list[39].main.humidity + " %";
 
                 // populateData(data2.results);
                 // displayWeatherInfo(data);
