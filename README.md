@@ -14,7 +14,8 @@ This weather application allows users to search for a city and generate current 
 
 This application can be useful for users planning a traveling trip who may want to gauge the weather conditions in advance for any city of choice. 
 
-Deployed Application: (link)
+GitHub repo link: https://github.com/dahfefe/6-weather-api
+Deployed Application: https://dahfefe.github.io/6-weather-api/
 
 ## Usage
 
