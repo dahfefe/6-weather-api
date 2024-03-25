@@ -208,6 +208,20 @@ function presetButtonClickHandler (event) {
   getWeatherData(presetCityName);
 }
 
+function readSavedDataFromStorage () {
+  var searchHistory = localStorage.getItem('search');
+  if (searchHistory) {
+    searchHistory = JSON.parse(searchHistory);
+  } else {
+    searchHistory = [];
+  }
+  return searchHistory;
+};
+
+function saveDataToStorage (searchHistory) {
+  localStorage.setItem('search', JSON.stringify(searchHistory));
+} 
+
 // Calling functions to both display dates and allow for submit feature on form submission
 displayTime();
 userFormEl.addEventListener('submit', formSubmitHandler);
