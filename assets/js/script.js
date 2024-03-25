@@ -136,29 +136,25 @@ function getWeatherData (cityName) {
                 humidityFiveDaysOut.textContent = " " + data2.list[39].main.humidity + " %";
 
                 // for loop to check for weather condition and then apply matching symbol per date
-                var weatherObject = [0, 8, 16, 24, 32, 39];
-
-                for (var i=0; i < weatherObject.length; i++) {
-                  var weatherConditionSymbol = data2.list[i].weather[0].main;
-                  console.log(weatherConditionSymbol);
+                // var weatherObject = [0, 8, 16, 24, 32, 39];
+                
+                // Side notes: 
+                // let allIds = document.querySelectorAll('#weather-forecast-image'); (used for when we want to declare for ALL tag ID's, meaning apply this SAME feature to all tags)
+                // for (let index = 0; index < allIds.length; index++) {
+                //   //....
                   
-                  var conditionEl = document.createElement('span');
+                // }
 
-                  if (weatherConditionSymbol = "Rain") {
-                    conditionEl.innerHTML = "<i class='bi bi-cloud-rain'></i>";
-                  } else if (weatherConditionSymbol = "Clouds") {
-                    conditionEl.innerHTML = "<i class='bi bi-cloudy'></i>";
-                  } else {
-                    conditionEl.innerHTML = "<i class='bi bi-sun'></i>";
-                  }
-
-                  humidityToday.appendChild(conditionEl);
-                  humidityOneDayOut.appendChild(conditionEl);
-                  humidityTwoDaysOut.appendChild(conditionEl);
-                  humidityThreeDaysOut.appendChild(conditionEl);
-                  humidityFourDaysOut.appendChild(conditionEl);
-                  humidityFiveDaysOut.appendChild(conditionEl);
-                } 
+                document.getElementById('weather-forecast-image-today').innerHTML = `<img src='https://openweathermap.org/img/wn/${data2.list[0].weather[0].icon}@2x.png' />`
+                document.getElementById('weather-forecast-image-one-day').innerHTML = `<img src='https://openweathermap.org/img/wn/${data2.list[8].weather[0].icon}@2x.png' />`
+                document.getElementById('weather-forecast-image-two-day').innerHTML = `<img src='https://openweathermap.org/img/wn/${data2.list[16].weather[0].icon}@2x.png' />`
+                document.getElementById('weather-forecast-image-three-day').innerHTML = `<img src='https://openweathermap.org/img/wn/${data2.list[24].weather[0].icon}@2x.png' />`
+                document.getElementById('weather-forecast-image-four-day').innerHTML = `<img src='https://openweathermap.org/img/wn/${data2.list[32].weather[0].icon}@2x.png' />`
+                document.getElementById('weather-forecast-image-five-day').innerHTML = `<img src='https://openweathermap.org/img/wn/${data2.list[39].weather[0].icon}@2x.png' />` 
+                
+                // Other option:
+                // let imgPara = document.getElementById('weather-forecast-image')
+                // let iconImageTag = document.createElement('img')   // <img> </img> 
 
               });
             } 
@@ -171,36 +167,6 @@ function getWeatherData (cityName) {
 
   })
 }
-
-
-/*
-function displayWeatherSymbol () {
-
-  var weatherObject = [0, 8, 16, 24, 32, 39];
-
-  for (var i=0; i < weatherObject.length; i++) {
-    var weatherConditionSymbol = data2.list[i].weather[0].main;
-    console.log(weatherConditionSymbol);
-    
-    var conditionEl = document.createElement('span');
-
-    if (weatherConditionSymbol = "Rain") {
-      conditionEl.innerHTML = "<i class='bi bi-cloud-rain'></i>";
-    } else if (weatherConditionSymbol = "Clouds") {
-      conditionEl.innerHTML = "<i class='bi bi-cloudy'></i>";
-    } else {
-      conditionEl.innerHTML = "<i class='bi bi-sun'></i>";
-    }
-
-    humidityToday.appendChild(conditionEl);
-    humidityOneDayOut.appendChild(conditionEl);
-    humidityTwoDaysOut.appendChild(conditionEl);
-    humidityThreeDaysOut.appendChild(conditionEl);
-    humidityFourDaysOut.appendChild(conditionEl);
-    humidityFiveDaysOut.appendChild(conditionEl);
-  } 
-}
-*/
 
 // function for city buttons that have a preconfigured city per button
 function presetButtonClickHandler (event) {
