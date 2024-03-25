@@ -178,6 +178,14 @@ function presetButtonClickHandler (event) {
 
 function createNewSearchedButton (cityName) {
   
+  alreadyMadePresets = ['Atlanta', 'Denver', 'Seattle', 'San Francisco', 'Orlando', 'New York', 'Chicago', 'Austin'];
+
+  /*
+  if (cityname === alreadyMadePresets) {
+    break;
+  }
+  */
+
   var newButton = document.createElement('button');
   newButton.classList = 'btn';
   newButton.setAttribute('value', cityName);
