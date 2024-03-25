@@ -232,7 +232,8 @@ function readSavedDataFromStorage () {
   } else {
     searchHistory = [];
   }
-  return searchHistory;
+
+  createNewSearchedButton(searchHistory);
 };
 
 function saveDataToStorage (searchHistory) {
@@ -242,6 +243,9 @@ function saveDataToStorage (searchHistory) {
 // Calling functions to both display dates and allow for submit feature on form submission
 displayTime();
 userFormEl.addEventListener('submit', formSubmitHandler);
+
+// call function to read data from local storage to populate button based on search history
+readSavedDataFromStorage();
 
 // preset buttons by city including newly generated buttons from search history
 presetCityButtons.addEventListener('click', presetButtonClickHandler);
