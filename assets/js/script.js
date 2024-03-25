@@ -243,12 +243,5 @@ function saveDataToStorage (searchHistory) {
 displayTime();
 userFormEl.addEventListener('submit', formSubmitHandler);
 
-// preset buttons by city
-buttonAtlanta.addEventListener('click', presetButtonClickHandler);
-buttonDenver.addEventListener('click', presetButtonClickHandler);
-buttonSeattle.addEventListener('click', presetButtonClickHandler);
-buttonSF.addEventListener('click', presetButtonClickHandler);
-buttonOrlando.addEventListener('click', presetButtonClickHandler);
-buttonNY.addEventListener('click', presetButtonClickHandler);
-buttonChicago.addEventListener('click', presetButtonClickHandler);
-buttonAustin.addEventListener('click', presetButtonClickHandler);
+// preset buttons by city including newly generated buttons from search history
+presetCityButtons.addEventListener('click', presetButtonClickHandler);
