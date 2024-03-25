@@ -15,18 +15,21 @@ var cardDateThreeDaysOut = document.querySelector('#three-day-in-future');
 var cardDateFourDaysOut = document.querySelector('#four-day-in-future');
 var cardDateFiveDaysOut = document.querySelector('#five-day-in-future');
 
+// 5-Day Forecast Cards - Temperature Info
 var tempOneDayOut = document.querySelector('#temp-one-day-out');
 var tempTwoDaysOut = document.querySelector('#temp-two-days-out');
 var tempThreeDaysOut = document.querySelector('#temp-three-days-out');
 var tempFourDaysOut = document.querySelector('#temp-four-days-out');
 var tempFiveDaysOut = document.querySelector('#temp-five-days-out');
 
+// 5-Day Forecast Cards - Wind Info
 var windOneDayOut = document.querySelector('#wind-one-day-out');
 var windTwoDaysOut = document.querySelector('#wind-two-days-out');
 var windThreeDaysOut = document.querySelector('#wind-three-days-out');
 var windFourDaysOut = document.querySelector('#wind-four-days-out');
 var windFiveDaysOut = document.querySelector('#wind-five-days-out');
 
+// 5-Day Forecast Cards - Humidity Info
 var humidityOneDayOut = document.querySelector('#humidity-one-day-out');
 var humidityTwoDaysOut = document.querySelector('#humidity-two-days-out');
 var humidityThreeDaysOut = document.querySelector('#humidity-three-days-out');
@@ -44,7 +47,7 @@ var buttonChicago = document.querySelector('#buttonChicago');
 var buttonAustin = document.querySelector('#buttonAustin');
 
 // Text field variable for user input + initial input by deafult when opening page
-citySearchTerm.textContent = "Sacramento ";
+citySearchTerm.textContent = " ";
 
 // Displaying dates from present time
 function displayTime() {
@@ -72,17 +75,20 @@ function displayTime() {
   cardDateFiveDaysOut.textContent = fiveDaysOut
 }
 
+// Function for form submission
 function formSubmitHandler(event) {
   event.preventDefault();
   var cityName = cityInputEl.value;
 
   if (!cityName) {
-    alert('Please enter a city');
+    alert('Please enter a valid city');
   } else {
     getWeatherData();
   }
 }
 
+// function that contains two fetch commands to first retrieve longitude and latitude
+// then second fetch utilize lon and lat data to retrieve additional weather info
 function getWeatherData (cityName) {
 
   var cityName = cityInputEl.value;
@@ -128,68 +134,85 @@ function getWeatherData (cityName) {
                 humidityFourDaysOut.textContent = " " + data2.list[32].main.humidity + " %";
                 humidityFiveDaysOut.textContent = " " + data2.list[39].main.humidity + " %";
 
+                // for loop to check for weather condition and then apply matching symbol per date
+                var weatherObject = [0, 8, 16, 24, 32, 39];
+
+                for (var i=0; i < weatherObject.length; i++) {
+                  var weatherConditionSymbol = data2.list[i].weather[0].main;
+                  console.log(weatherConditionSymbol);
+                  
+                  var conditionEl = document.createElement('span');
+
+                  if (weatherConditionSymbol = "Rain") {
+                    conditionEl.innerHTML = "<i class='bi bi-cloud-rain'></i>";
+                  } else if (weatherConditionSymbol = "Clouds") {
+                    conditionEl.innerHTML = "<i class='bi bi-cloudy'></i>";
+                  } else {
+                    conditionEl.innerHTML = "<i class='bi bi-sun'></i>";
+                  }
+
+                  humidityToday.appendChild(conditionEl);
+                  humidityOneDayOut.appendChild(conditionEl);
+                  humidityTwoDaysOut.appendChild(conditionEl);
+                  humidityThreeDaysOut.appendChild(conditionEl);
+                  humidityFourDaysOut.appendChild(conditionEl);
+                  humidityFiveDaysOut.appendChild(conditionEl);
+                } 
+
               });
             } 
           })
         });
       } 
 
-    cityInputEl.value = "";
+   cityInputEl.value = "";
 
   })
 }
 
+
+/*
+function displayWeatherSymbol () {
+
+  var weatherObject = [0, 8, 16, 24, 32, 39];
+
+  for (var i=0; i < weatherObject.length; i++) {
+    var weatherConditionSymbol = data2.list[i].weather[0].main;
+    console.log(weatherConditionSymbol);
+    
+    var conditionEl = document.createElement('span');
+
+    if (weatherConditionSymbol = "Rain") {
+      conditionEl.innerHTML = "<i class='bi bi-cloud-rain'></i>";
+    } else if (weatherConditionSymbol = "Clouds") {
+      conditionEl.innerHTML = "<i class='bi bi-cloudy'></i>";
+    } else {
+      conditionEl.innerHTML = "<i class='bi bi-sun'></i>";
+    }
+
+    humidityToday.appendChild(conditionEl);
+    humidityOneDayOut.appendChild(conditionEl);
+    humidityTwoDaysOut.appendChild(conditionEl);
+    humidityThreeDaysOut.appendChild(conditionEl);
+    humidityFourDaysOut.appendChild(conditionEl);
+    humidityFiveDaysOut.appendChild(conditionEl);
+  } 
+}
+*/
+
+// function for city buttons that have a preconfigured city per button
 function presetButtonClickHandler (event) {
   var presetCityName = event.target.getAttribute('value');
   console.log(presetCityName);
-  citySearchTerm.textContent = presetCityName;
   cityInputEl.value = presetCityName;
   getWeatherData(presetCityName);
 }
 
-/*
-
-var displayWeatherInfo = function (data) {   
-    todayContainerEl.textContent = 'No weather information found.';
-    return;
-  }
-
-  cityTodaySearchTerm.textContent = searchTerm;
-
-  for (var i = 0; i < repos.length; i++) {
-    var repoName = repos[i].owner.login + '/' + repos[i].name;
-
-    var repoEl = document.createElement('div');
-    repoEl.classList = 'list-item flex-row justify-space-between align-center';
-
-    var titleEl = document.createElement('span');
-    titleEl.textContent = repoName;
-
-    repoEl.appendChild(titleEl);
-
-    var statusEl = document.createElement('span');
-    statusEl.classList = 'flex-row align-center';
-
-    if (repos[i].open_issues_count > 0) {   
-      statusEl.innerHTML =
-        "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + ' issue(s)';
-    } else {
-      statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-    }
-
-    repoEl.appendChild(statusEl);  
-
-    todayContainerEl.appendChild(repoEl);
-  }
-
-
-cityButtonsEl.addEventListener('click', buttonClickHandler);
-
-*/
-
+// Calling functions to both display dates and allow for submit feature on form submission
 displayTime();
 userFormEl.addEventListener('submit', formSubmitHandler);
 
+// preset buttons by city
 buttonAtlanta.addEventListener('click', presetButtonClickHandler);
 buttonDenver.addEventListener('click', presetButtonClickHandler);
 buttonSeattle.addEventListener('click', presetButtonClickHandler);

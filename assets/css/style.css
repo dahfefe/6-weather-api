@@ -1,3 +1,4 @@
+/* Root universal selectors */
 :root {
   --primary: #e1ebe9;
   --secondary: #70bec8;
@@ -338,6 +339,7 @@ h3 {
   flex: 0 0 100%;
 }
 
+/* MEDIA QUERIES FOR RESPONSIVE DESIGN */
 /* col-sm */
 @media screen and (min-width: 640px) {
   .col-sm-1 {
