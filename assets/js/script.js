@@ -7,6 +7,7 @@ var timeToday = document.querySelector('#today-date');
 var tempToday = document.querySelector('#temp-today');
 var windToday = document.querySelector('#wind-today');
 var humidityToday = document.querySelector('#humidity-today');
+var presetCityButtons = document.querySelector('#preset-buttons-list');
 
 // 5-Day Forecast Cards
 var cardDateOneDayOut = document.querySelector('#one-day-in-future');
@@ -165,6 +166,7 @@ function getWeatherData (cityName) {
         });
       } 
 
+   createNewSearchedButton(cityName);
    cityInputEl.value = "";
 
   })
@@ -206,6 +208,21 @@ function presetButtonClickHandler (event) {
   console.log(presetCityName);
   cityInputEl.value = presetCityName;
   getWeatherData(presetCityName);
+}
+
+function createNewSearchedButton (cityName) {
+  
+  var newButton = document.createElement('button');
+  newButton.classList = 'btn';
+  newButton.setAttribute('value', cityName);
+
+  var buttonTitle = document.createElement('span');
+  buttonTitle.textContent = cityName;
+
+  newButton.appendChild(buttonTitle);
+  presetCityButtons.appendChild(newButton);
+
+  saveDataToStorage(cityName);
 }
 
 function readSavedDataFromStorage () {
