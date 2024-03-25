@@ -24,8 +24,8 @@ The main case uses for this project include the following:
 3) all city searches include a present-day weather information as well as a five-day forecast for the respective city of interest
 4) utilizing local storage to store persistent data from the user
 
-Below are screenshots of each section of the project:
-
+## Screenshot of Application
+![image](./assets/images/Screenshot%202024-03-25%20at%204.06.03 PM.png)
 
 ## Credits
 
