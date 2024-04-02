@@ -93,7 +93,7 @@ function formSubmitHandler(event) {
 function getWeatherData (cityName) {
 
   var cityName = cityInputEl.value;
-  var apiUrl1 = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&APPID=efd27a81601aecf8450cd1c62fee7b55';
+  var apiUrl1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&APPID=efd27a81601aecf8450cd1c62fee7b55';
 
   fetch(apiUrl1).then(function (response) {
       if (response.ok) {
